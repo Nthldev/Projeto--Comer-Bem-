@@ -1,71 +1,44 @@
-from data import*
+from data import *
 
 print("Bem vindo ao Comer Bem!")
 print("O app com a seleção dos melhores restaurantes do Rio.")
+
+def mostrar_opcoes_culinaria():
+    alfabeto = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z"]
+    letra = input("Digite a letra inicial da culinária desejada: ").upper()
+    if letra in alfabeto:
+        opcoes = [culinaria for culinaria in restaurantes if culinaria.startswith(letra)]
+        print("Opções de culinárias disponíveis:")
+        for opcao in opcoes:
+            print(opcao)
+    else:
+        print("Perdão, não reconheço a letra digitada")
 
 def mostrar_restaurantes(culinaria):
     if culinaria in restaurantes:
         print()
         print(f"Restaurantes de culinária {culinaria}:")
+        print()
         for restaurante in restaurantes[culinaria]:
             print(f"Nome: {restaurante['nome']}")
             print(f"Endereço: {restaurante['endereço']}")
             print(f"Telefone: {restaurante['telefone']}")
             print(f"Avaliação: {restaurante['avaliação']}")
             print()
-        repetir = input("Deseja realizar uma nova busca? Digite s para sim ou n para encerrar").lower()
-        if repetir == "n":
-            print("encerrando programa")
-            exit()
-        elif repetir == "s":
-            mostrar_opcoes_culinaria()
-        else:
-            print("Perdão, não entendi sua resposta. Seguem novamente as opções culinárias")
-            mostrar_opcoes_culinaria()
     else:
         print(f"Nenhum restaurante encontrado para a culinária {culinaria}")
-        repetir = input("Deseja realizar uma nova busca? Digite s para sim ou n para encerrar").lower()
+
+def programa_comer_bem():
+    while True:
+        mostrar_opcoes_culinaria()
+        culinaria_escolhida = input("Escolha uma das opções de culinária: ").title()
+        mostrar_restaurantes(culinaria_escolhida)
+        repetir = input("Deseja realizar uma nova busca? Digite 's' para sim ou 'n' para encerrar: ").lower()
         if repetir == "n":
-            print("encerrando programa")
-            exit()
-        elif repetir == "s":
-            mostrar_opcoes_culinaria()
-        else:
-            print("Perdão, não entendi sua resposta. Seguem novamente as opções culinárias")
-            mostrar_opcoes_culinaria()
+            print("Encerrando programa..")
+            break
+        elif repetir != "s":
+            print("Perdão, não entendi sua resposta. Seguem novamente as opções culinárias.")
 
-while True:
-    def mostrar_opcoes_culinaria():
-        alfabeto = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z"]
-        letra = input("Digite a letra inicial da culinária desejada: ").upper()
-        if letra in alfabeto:
-            opcoes = [culinaria for culinaria in restaurantes if culinaria.startswith(letra)]
-            print("Opções de culinárias disponíveis:")
-            for opcao in opcoes:
-                print(opcao)
-        else:
-            print("Perdão, não reconheço a letra digitada")
-
-    mostrar_opcoes_culinaria()
-    
-    culinaria_escolhida = input("Escolha uma das opções de culinária: ").title()
-    
-    mostrar_restaurantes(culinaria_escolhida)
-    
-    repetir = input("Deseja realizar uma nova busca? Digite 's' para sim ou 'n' para encerrar: ").lower()
-    
-    if repetir == "n":
-        print("Encerrando programa")
-        break  # Encerra o loop e, portanto, o programa
-    elif repetir != "s":
-        print("Perdão, não entendi sua resposta. Seguem novamente as opções culinárias.")
-
-
-
-mostrar_opcoes_culinaria()
-
-culinaria_escolhida = input("Escolha uma das opções de culinária: ").title()
-
-mostrar_restaurantes(culinaria_escolhida)
-
-
+# Inicializa o programa
+programa_comer_bem()
