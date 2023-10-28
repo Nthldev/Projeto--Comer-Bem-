@@ -26,4 +26,12 @@ with open('culinarias_data.csv', encoding='utf-8') as csvfile:
         })
 
 # Imprima o dicionário resultante
-print(restaurantes)
+#print(restaurantes)
+
+def restaurantes_porlinha(dicionario):
+    for culinaria in dicionario:
+        print(culinaria)
+        for item in dicionario[culinaria]:
+            print (item)
+
+print(restaurantes_porlinha(restaurantes))
