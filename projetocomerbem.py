@@ -39,7 +39,7 @@ def programa_comer_bem():
         mostrar_restaurantes(culinaria_escolhida)
         repetir = input("Deseja realizar uma nova busca? Digite 's' para sim ou 'n' para encerrar: ").lower()
         if repetir == "n":
-            print("Encerrando programa..")
+            print("Encerrando programa..Volte sempre!")
             break
         elif repetir != "s":
             print("Perdão, não entendi sua resposta. Seguem novamente as opções culinárias.")
