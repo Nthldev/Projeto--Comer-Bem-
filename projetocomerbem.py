@@ -17,6 +17,7 @@ def mostrar_opcoes_culinaria():
                 print(opcao)
     else:
         print("Perdão, não reconheço a letra digitada")
+        mostrar_opcoes_culinaria()
 
 def mostrar_restaurantes(culinaria):
     if culinaria in restaurantes:
