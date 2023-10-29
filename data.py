@@ -34,4 +34,4 @@ def restaurantes_porlinha(dicionario):
         for item in dicionario[culinaria]:
             print (item)
 
-print(restaurantes_porlinha(restaurantes))
+#restaurantes_porlinha(restaurantes)
