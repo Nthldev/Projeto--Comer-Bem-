@@ -8,9 +8,13 @@ def mostrar_opcoes_culinaria():
     letra = input("Digite a letra inicial da culinária desejada: ").upper()
     if letra in alfabeto:
         opcoes = [culinaria for culinaria in restaurantes if culinaria.startswith(letra)]
-        print("Opções de culinárias disponíveis:")
-        for opcao in opcoes:
-            print(opcao)
+        if len(opcoes) < 1:
+            print("\nPerdão, não temos nenhuma culinária iniciando com esta letra\n")
+            mostrar_opcoes_culinaria()
+        else:
+            print("Opções de culinárias disponíveis:")
+            for opcao in opcoes:
+                print(opcao)
     else:
         print("Perdão, não reconheço a letra digitada")
 
@@ -31,7 +35,7 @@ def mostrar_restaurantes(culinaria):
 def programa_comer_bem():
     while True:
         mostrar_opcoes_culinaria()
-        culinaria_escolhida = input("Escolha uma das opções de culinária: ").title()
+        culinaria_escolhida = input("Escolha uma das opções de culinária (inclua os acentos): ").title()
         mostrar_restaurantes(culinaria_escolhida)
         repetir = input("Deseja realizar uma nova busca? Digite 's' para sim ou 'n' para encerrar: ").lower()
         if repetir == "n":
